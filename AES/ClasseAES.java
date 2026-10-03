@@ -19,8 +19,7 @@ public class ClasseAES {
 
             // Convertim el missatge a bytes i el xifrem.
             byte[] missatgeXifrat = cipher.doFinal(
-                    missatge.getBytes(StandardCharsets.UTF_8)
-            );
+                    missatge.getBytes(StandardCharsets.UTF_8));
 
             // Convertim els bytes xifrats a text per poder-los mostrar o guardar.
             return Base64.getEncoder().encodeToString(missatgeXifrat);
@@ -31,7 +30,8 @@ public class ClasseAES {
         }
     }
 
-    // Aquest mètode rep el missatge xifrat i la clau, i recupera el missatge original.
+    // Aquest mètode rep el missatge xifrat i la clau, i recupera el missatge
+    // original.
     public static String desencripta(String missatgeXifrat, String clau) {
         try {
             // Preparem la mateixa clau que hem fet servir per xifrar.
@@ -53,8 +53,7 @@ public class ClasseAES {
         } catch (Exception e) {
             // Pot passar, per exemple, si la clau no és la correcta.
             throw new IllegalArgumentException(
-                    "No s'ha pogut desencriptar el missatge. Comprova la clau i el text xifrat.", e
-            );
+                    "No s'ha pogut desencriptar el missatge. Comprova la clau i el text xifrat.", e);
         }
     }
 
@@ -66,8 +65,7 @@ public class ClasseAES {
         // AES només accepta claus de 16, 24 o 32 bytes.
         if (bytesClau.length != 16 && bytesClau.length != 24 && bytesClau.length != 32) {
             throw new IllegalArgumentException(
-                    "La clau ha de tenir 16, 24 o 32 bytes."
-            );
+                    "La clau ha de tenir 16, 24 o 32 bytes.");
         }
 
         // Creem la clau AES a partir dels bytes.
